@@ -46,11 +46,42 @@ grep -rl "suyashdubey.com" . --include="*.html" --include="*.xml" --include="*.t
 
 ## Deploying
 
-- **Netlify / Cloudflare Pages** — drag the folder in, or connect the repo. `_headers`
-  is picked up automatically for caching and security headers.
-- **Vercel** — `vercel deploy` from this directory.
-- **GitHub Pages** — push to a repo, enable Pages on the root. Note that Pages ignores
-  `_headers`, and `404.html` works out of the box.
+Live on **GitHub Pages** from `main` (root), repo `suyashdube/suyashdubey.com`.
+Pushing to `main` redeploys — no build step, no CI.
+
+The `CNAME` file pins the custom domain. Until `suyashdubey.com` has DNS, GitHub
+redirects the `github.io` URL to it, so the site is unreachable by design.
+
+### DNS records to add at the registrar
+
+Apex (`suyashdubey.com`) — four A records and four AAAA:
+
+```
+A     @    185.199.108.153
+A     @    185.199.109.153
+A     @    185.199.110.153
+A     @    185.199.111.153
+AAAA  @    2606:50c0:8000::153
+AAAA  @    2606:50c0:8001::153
+AAAA  @    2606:50c0:8002::153
+AAAA  @    2606:50c0:8003::153
+CNAME www  suyashdube.github.io.
+```
+
+**If the DNS is on Cloudflare, set every record to "DNS only" (grey cloud).** With
+the orange proxy on, GitHub cannot complete its ACME challenge and the certificate
+never issues — the single most common way this setup stalls.
+
+Once the records resolve, turn on **Enforce HTTPS** in the repo's Pages settings
+(it is greyed out until the certificate is issued, usually well under an hour).
+
+Also verify the domain under GitHub → Settings → Pages → *Verified domains*. That
+stops anyone else pointing a GitHub Pages site at this domain if it ever lapses.
+
+### Moving to Cloudflare Pages later
+
+Connect the same repo, framework preset "None", build command empty, output
+directory `/`. `_headers` starts working the moment you do.
 
 ## Notes on the build
 

@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suyash Dubey — Applied AI Engineer &amp; AI Consultant</title>
+<meta name="description" content="Applied AI engineer and independent consultant. I build agentic systems, RAG pipelines and AI MVPs that survive production — LangGraph, FastAPI, AWS Bedrock.">
+<link rel="canonical" href="https://suyashdubey.com/">
+<meta name="author" content="Suyash Dubey">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#06060a">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Suyash Dubey">
+<meta property="og:title" content="Suyash Dubey — Applied AI Engineer &amp; AI Consultant">
+<meta property="og:description" content="I build agentic systems, RAG pipelines and AI MVPs that survive production. Three years shipping LLM systems in healthcare and public digital infrastructure.">
+<meta property="og:url" content="https://suyashdubey.com/">
+<meta property="og:image" content="https://suyashdubey.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Suyash Dubey — Applied AI Engineer &amp; AI Consultant">
+<meta name="twitter:description" content="Agentic systems, RAG pipelines and AI MVPs that survive production. LangGraph · FastAPI · AWS Bedrock · Langfuse.">
+<meta name="twitter:image" content="https://suyashdubey.com/assets/img/og.png">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://suyashdubey.com/#person",
+      "name": "Suyash Dubey",
+      "alternateName": "Suyash Kumar Dubey",
+      "givenName": "Suyash",
+      "familyName": "Dubey",
+      "jobTitle": "Applied / Forward-Deployed AI Engineer",
+      "description": "Applied AI engineer and independent consultant building agentic systems, RAG pipelines and production LLM products.",
+      "email": "mailto:dsuyash57@gmail.com",
+      "url": "https://suyashdubey.com/",
+      "image": "https://suyashdubey.com/assets/img/og.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyash-kumar-dubey-410533211",
+        "https://github.com/suyashdube"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Indraprastha Institute of Information Technology, Delhi (IIIT Delhi)"
+      },
+      "knowsAbout": [
+        "Large language models","AI agents","LangGraph","LangChain","Retrieval-augmented generation",
+        "LLM evaluation","LLM observability","AWS Bedrock","FastAPI","Kubernetes","Prompt engineering",
+        "AI governance","Healthcare AI"
+      ],
+      "worksFor": { "@type": "Organization", "name": "SpinX AI" },
+      "address": { "@type": "PostalAddress", "addressCountry": "IN" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://suyashdubey.com/#website",
+      "url": "https://suyashdubey.com/",
+      "name": "Suyash Dubey — Applied AI Engineer",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://suyashdubey.com/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://suyashdubey.com/#profilepage",
+      "url": "https://suyashdubey.com/",
+      "name": "Suyash Dubey — Applied AI Engineer & AI Consultant",
+      "dateModified": "2026-09-13",
+      "isPartOf": { "@id": "https://suyashdubey.com/#website" },
+      "mainEntity": { "@id": "https://suyashdubey.com/#person" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://suyashdubey.com/#practice",
+      "name": "Suyash Dubey — AI engineering practice",
+      "description": "Independent AI engineering and consulting: AI MVP development, agentic systems and RAG, AI strategy, and LLM evaluation, observability and governance.",
+      "url": "https://suyashdubey.com/#services",
+      "email": "mailto:dsuyash57@gmail.com",
+      "founder": { "@id": "https://suyashdubey.com/#person" },
+      "areaServed": ["US","GB","EU","AU","IN","AE"],
+      "availableLanguage": "en",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI engineering services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI MVP development", "serviceType": "AI product development", "description": "Scope, build and ship a working AI product — typically a 4 to 6 week zero-to-one engagement ending in a deployed system." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Agentic systems and RAG engineering", "serviceType": "AI systems engineering", "description": "LangGraph state machines, tool use, human-in-the-loop review and retrieval pipelines grounded in your own data." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI strategy and forward-deployed consulting", "serviceType": "AI consulting", "description": "Discovery with the people who will use the system, feasibility assessment, architecture and a sequenced roadmap." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "LLM evaluation, observability and governance", "serviceType": "AI assurance", "description": "Evaluation harnesses, tracing, prompt versioning, PII and PHI redaction, and governance requirements translated into technical controls." } }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://suyashdubey.com/#faq",
+      "isPartOf": { "@id": "https://suyashdubey.com/#website" },
+      "mainEntity": [
+        { "@type": "Question", "name": "What does an applied AI engineer actually deliver?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A working system, not a slide deck. That usually means an agent or retrieval pipeline running behind an API, wired into your data, with evaluation and tracing in place so you can see what the model did and why. I scope it with your stakeholders in plain language, build the thin slice first, instrument it, then iterate against real usage." } },
+        { "@type": "Question", "name": "Do you work with regulated or sensitive data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. I spent two years on a production medical scribe operating on protected health information, and contributed to India's national digital health infrastructure through Code for GovTech. In practice that means grounding every generated output in a retrievable source, redacting PII and PHI before it reaches a model, versioning prompts, tracing every call, and agreeing the regulatory and security constraints in writing at the start of the engagement." } },
+        { "@type": "Question", "name": "What is a typical engagement and timeline?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Three shapes. A one to two week discovery sprint that ends in an architecture and a costed roadmap. A four to six week MVP build that ends in a deployed system your users can touch. Or an ongoing fractional engagement, typically two to three days a week, embedded with your team." } },
+        { "@type": "Question", "name": "Which models and frameworks do you build on?",
+          "acceptedAnswer": { "@type": "Answer", "text": "LangGraph and LangChain for orchestration, FastAPI for serving, AWS Bedrock or a direct provider API for inference, FAISS or Chroma for retrieval, and Langfuse for tracing and evaluation. I stay provider-neutral — Anthropic, OpenAI and open-weight models all have a place, and the choice should follow the evaluation results rather than the other way round." } },
+        { "@type": "Question", "name": "Can you take an existing prototype to production?",
+          "acceptedAnswer": { "@type": "Answer", "text": "That is most of the work I get asked for. The usual gaps are the same: no evaluation harness, no tracing, prompts that live in application code, retrieval that is not grounded, and no plan for cost or latency under load. I close those gaps and put the serving path on infrastructure that can carry it — Kubernetes, Kafka and Redis when the load genuinely demands them." } },
+        { "@type": "Question", "name": "Which time zones do you cover?",
+          "acceptedAnswer": { "@type": "Answer", "text": "I work remotely from India on IST. That gives a full overlap with the APAC and Australian working day, a comfortable overlap with Europe, and US Eastern mornings. Clients in the US, UK, Europe and Australia have all worked in that rhythm." } },
+        { "@type": "Question", "name": "How do we start?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Send a short brief through the form on this page or email dsuyash57@gmail.com. If it looks like a fit, we take a 30 minute call to pressure-test the problem, and I come back with a proposed scope, a timeline and a fixed price for the first phase." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="irisStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3fe4ff"/><stop offset="45%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#ff5cd0"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="/" aria-label="Suyash Dubey — home">
+      <span class="mono-badge" aria-hidden="true">SD</span>
+      <span>Suyash Dubey<small>Applied AI Engineer</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <span class="clock"><i aria-hidden="true"></i><span data-clock>India (IST)</span></span>
+      <a class="btn btn--solid" href="#contact"><span>Start a project</span><span class="arw" aria-hidden="true">↗</span></a>
+      <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">Independent AI engineer · Available for consulting</p>
+      <h1 class="display">
+        <span class="ln"><i>Ship AI that</i></span>
+        <span class="ln"><i class="dim">survives</i></span>
+        <span class="ln"><i>production.</i></span>
+      </h1>
+      <p class="lead hero__sub">
+        I'm <strong>Suyash Dubey</strong> — an applied, forward-deployed AI engineer. Three years
+        building agentic systems and retrieval pipelines in healthcare and public digital
+        infrastructure, where a wrong output is a clinical risk rather than a bad demo.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--solid" href="#contact"><span>Start a project</span><span class="arw" aria-hidden="true">↗</span></a>
+        <a class="btn btn--ghost" href="#work"><span>See selected work</span></a>
+      </div>
+      <p class="hero__meta">
+        <span>LangGraph</span><span>FastAPI</span><span>AWS Bedrock</span><span>Langfuse</span><span>Kubernetes</span>
+      </p>
+      <p class="cue" aria-hidden="true"><s></s> Scroll</p>
+    </div>
+
+    <div class="stage" data-prism data-mode="loading">
+      <canvas aria-hidden="true"></canvas>
+      <svg class="fallback" viewBox="0 0 600 600" role="img" aria-label="Abstract iridescent form of nested rotating rings, representing layered AI systems.">
+        <defs>
+          <linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3fe4ff"/><stop offset="50%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#ff5cd0"/>
+          </linearGradient>
+          <linearGradient id="fg2" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffd36e"/><stop offset="55%" stop-color="#ff5cd0"/><stop offset="100%" stop-color="#7c5cff"/>
+          </linearGradient>
+          <radialGradient id="fgGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#7c5cff" stop-opacity=".45"/><stop offset="100%" stop-color="#7c5cff" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="300" cy="300" r="240" fill="url(#fgGlow)"/>
+        <g fill="none" stroke-linecap="round">
+          <g data-spin="1"><rect x="80" y="80" width="440" height="440" rx="150" stroke="url(#fg1)" stroke-width="10" opacity=".95"/></g>
+          <g data-spin="-1.25"><rect x="112" y="112" width="376" height="376" rx="128" stroke="url(#fg2)" stroke-width="9" opacity=".9"/></g>
+          <g data-spin="1.6"><rect x="146" y="146" width="308" height="308" rx="105" stroke="url(#fg1)" stroke-width="8" opacity=".85"/></g>
+          <g data-spin="-2"><rect x="180" y="180" width="240" height="240" rx="82" stroke="url(#fg2)" stroke-width="7" opacity=".8"/></g>
+          <g data-spin="2.5"><rect x="212" y="212" width="176" height="176" rx="60" stroke="url(#fg1)" stroke-width="6" opacity=".75"/></g>
+          <g data-spin="-3.1"><rect x="244" y="244" width="112" height="112" rx="38" stroke="url(#fg2)" stroke-width="5" opacity=".7"/></g>
+        </g>
+      </svg>
+
+      <span class="chip float">Grounded retrieval <b>on</b></span>
+      <span class="chip chip--v float">Every call traced <b>on</b></span>
+      <span class="chip chip--c float">Eval gate <b>before ship</b></span>
+      <span class="chip float">PII / PHI redaction <b>enforced</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ METRICS ============================ -->
+<section class="metrics" style="padding-block:0" aria-label="Selected outcomes">
+  <div class="wrap">
+    <div class="metrics__grid">
+      <div class="metric rv">
+        <b><em>≈</em><span data-count="40" data-suffix="%">0%</span></b>
+        <p>less clinician documentation time after the scribe agent rolled out</p>
+      </div>
+      <div class="metric rv rv-d1">
+        <b><em>≈</em><span data-count="20" data-suffix="%">0%</span></b>
+        <p>accuracy lift on real-time EEG signal classification</p>
+      </div>
+      <div class="metric rv rv-d2">
+        <b><em>≈</em><span data-count="60" data-suffix="%">0%</span></b>
+        <p>manual steps removed from a content operations pipeline</p>
+      </div>
+      <div class="metric rv rv-d3">
+        <b><span data-count="3" data-suffix="">0</span> yrs</b>
+        <p>shipping LLM systems in regulated, data-sensitive domains</p>
+      </div>
+    </div>
+    <p class="footnote">Figures are approximate and reflect internal measurement at the time, in previous roles. Happy to walk through how each was measured on a call.</p>
+  </div>
+</section>
+
+<!-- ============================ MARQUEE ============================ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="hi">Builder, not just a prompter</span><span>LangGraph</span><span>LangChain</span><span>FastAPI</span>
+    <span>AWS Bedrock</span><span>Langfuse</span><span>Kubernetes</span><span>Kafka</span><span>PyTorch</span>
+    <span>Terraform</span><span>Redis</span><span>PostgreSQL</span><span>n8n</span><span>CrewAI</span><span>FAISS</span>
+  </div>
+</div>
+
+<!-- ============================ SERVICES ============================ -->
+<section id="services" aria-labelledby="services-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow rv">What I do</p>
+        <h2 class="display rv rv-d1" id="services-h">Services built<br>for shipping</h2>
+      </div>
+      <p class="lead rv rv-d2">Four ways to work together. Every one of them ends in something running, instrumented and handed over — not a document about what could be built.</p>
+    </div>
+
+    <div class="svc">
+      <article class="card card--tilt svc__item rv">
+        <span class="svc__n">01</span>
+        <span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M12 22V12M3 7l9 5 9-5"/></svg></span>
+        <h3>AI MVP development</h3>
+        <p>Zero to one. We agree the single outcome the product has to prove, then I build and deploy the thinnest system that proves it — API, model orchestration, retrieval, front end if you need one, and the evaluation that tells you whether it actually works.</p>
+        <div class="tags"><span class="tag">0 → 1</span><span class="tag">Deployed, not demoed</span><span class="tag">Fixed scope</span></div>
+        <div class="svc__meta"><span>Typical <b>4–6 weeks</b></span><span>Ends in <b>a live system</b></span></div>
+      </article>
+
+      <article class="card card--tilt svc__item rv rv-d1">
+        <span class="svc__n">02</span>
+        <span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><path d="M8.6 6h6.8M7.3 8.3 10.8 15.7M16.7 8.3 13.2 15.7"/></svg></span>
+        <h3>Agentic systems &amp; RAG</h3>
+        <p>Stateful LangGraph workflows with conditional branching, tool use and human-in-the-loop review, so the agent handles the messy middle instead of escalating to a person on every turn. Retrieval that is grounded in your own corpus, with the citation trail to prove it.</p>
+        <div class="tags"><span class="tag">LangGraph</span><span class="tag">Grounded RAG</span><span class="tag">Tool use</span><span class="tag">HITL</span></div>
+        <div class="svc__meta"><span>Typical <b>3–8 weeks</b></span><span>Ends in <b>a traced pipeline</b></span></div>
+      </article>
+
+      <article class="card card--tilt svc__item rv rv-d2">
+        <span class="svc__n">03</span>
+        <span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V11M11 20V5M16 20v-6M21 20V8"/></svg></span>
+        <h3>AI strategy &amp; forward-deployed consulting</h3>
+        <p>I sit with the people who will actually use the system, in their language, and come back with what is feasible, what it costs, what it risks and the order to build it in. Includes translating AI-governance and security requirements into concrete technical controls rather than policy prose.</p>
+        <div class="tags"><span class="tag">Discovery sprint</span><span class="tag">Architecture</span><span class="tag">Costed roadmap</span></div>
+        <div class="svc__meta"><span>Typical <b>1–2 weeks</b></span><span>Ends in <b>a decision you can fund</b></span></div>
+      </article>
+
+      <article class="card card--tilt svc__item rv rv-d3">
+        <span class="svc__n">04</span>
+        <span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9l6.4 6.4"/><circle cx="12" cy="12" r="1.4"/></svg></span>
+        <h3>Evaluation, observability &amp; governance</h3>
+        <p>The part most teams bolt on too late. Evaluation harnesses that gate releases, Langfuse tracing on every model call, versioned prompts, PII and PHI redaction before inference, and dashboards for token spend, latency and quality so regressions surface before your users find them.</p>
+        <div class="tags"><span class="tag">Eval harnesses</span><span class="tag">Langfuse</span><span class="tag">Prompt governance</span><span class="tag">PHI redaction</span></div>
+        <div class="svc__meta"><span>Typical <b>2–4 weeks</b></span><span>Ends in <b>release gates</b></span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROCESS ============================ -->
+<section aria-labelledby="process-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow rv">How it runs</p>
+        <h2 class="display rv rv-d1" id="process-h">The forward-<br>deployed loop</h2>
+      </div>
+      <p class="lead rv rv-d2">The same four steps whether it is a two-week discovery or a six-month build. The point is to get real usage in front of the system as early as it can survive it.</p>
+    </div>
+    <div class="process rv">
+      <div class="step"><div class="step__n">01</div><h3>Scope in plain language</h3><p>I talk to the people who will use it, not only the people who commissioned it, and write the behaviour spec in their words.</p></div>
+      <div class="step"><div class="step__n">02</div><h3>Build the thin slice</h3><p>One end-to-end path through the system, deployed. Enough to be wrong in public and cheap to change.</p></div>
+      <div class="step"><div class="step__n">03</div><h3>Instrument before scaling</h3><p>Traces, evals, redaction and cost telemetry go in on the first commit — never as a pre-launch scramble.</p></div>
+      <div class="step"><div class="step__n">04</div><h3>Iterate on real usage</h3><p>Weekly cycles against what people actually did with it, with the evaluation suite deciding what ships.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WORK ============================ -->
+<section id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow rv">Selected work</p>
+        <h2 class="display rv rv-d1" id="work-h">Systems that<br>went live</h2>
+      </div>
+    </div>
+
+    <div class="work">
+      <a class="work__row rv" href="/work/clinical-documentation-agent.html">
+        <span class="work__idx">01</span>
+        <span class="work__body">
+          <span class="org">Asha Health · AI medical scribe · 2023–2025</span>
+          <h3>A clinical documentation agent that doctors kept using</h3>
+          <p>A LangGraph agent that listens to a physician–patient conversation, extracts clinical entities, and drafts a note grounded in patient history and clinical guidelines on AWS Bedrock — with prompt governance and full tracing, because the output touches protected health data.</p>
+          <span class="work__stat"><span>Impact <b>≈40% less documentation time</b></span><span>Stack <b>LangGraph · Bedrock · Langfuse</b></span></span>
+        </span>
+      </a>
+
+      <a class="work__row rv rv-d1" href="/work/agentic-content-engine.html">
+        <span class="work__idx">02</span>
+        <span class="work__body">
+          <span class="org">EMB Global · Rayo AI platform · 2025</span>
+          <h3>An agentic content engine with compliance built into generation</h3>
+          <p>Multi-step agents for research, drafting and optimisation behind an AI SEO platform, with brand-voice and compliance checks enforced at generation time rather than in review — orchestrated through n8n and served on FastAPI under high throughput.</p>
+          <span class="work__stat"><span>Impact <b>≈60% fewer manual steps</b></span><span>Stack <b>FastAPI · LangChain · n8n · Azure</b></span></span>
+        </span>
+      </a>
+
+      <a class="work__row rv rv-d2" href="/work/national-health-subscription-service.html">
+        <span class="work__idx">03</span>
+        <span class="work__body">
+          <span class="org">National Health Authority, India · ABHA · 2023</span>
+          <h3>Consent-driven subscriptions for a national health portal</h3>
+          <p>The subscription management microservice for ABHA, India's national health identity platform, built from scratch — automating consent-driven subscription flows across health services, as part of Code for GovTech.</p>
+          <span class="work__stat"><span>Scope <b>National digital public good</b></span><span>Stack <b>Spring Boot · Java · MongoDB · Docker</b></span></span>
+        </span>
+      </a>
+    </div>
+
+    <h3 class="display rv" style="margin-top:clamp(48px,6vw,88px);font-size:clamp(1.4rem,2.2vw,2rem)">Other builds</h3>
+    <div class="builds">
+      <article class="card card--tilt build rv"><h4>Compliance audit agent</h4><p>Agentic API that ingests a URL, scrapes it autonomously, judges it against a written policy with an LLM, and returns structured non-compliant findings with justification.</p><span class="tag">LangChain · Flask · Pydantic</span></article>
+      <article class="card card--tilt build rv rv-d1"><h4>RAG document intelligence API</h4><p>End-to-end retrieval-augmented QA over unstructured documents — embedding retrieval, grounded generation and an evaluation harness, exposed as REST.</p><span class="tag">LangChain · FAISS · FastAPI</span></article>
+      <article class="card card--tilt build rv rv-d2"><h4>WhatsApp virtual try-on</h4><p>Zero-human-in-the-loop automation: inbound WhatsApp message via Twilio, diffusion try-on model, result delivered straight back to the sender.</p><span class="tag">Flask · Twilio · Gradio</span></article>
+      <article class="card card--tilt build rv rv-d3"><h4>In-memory-compute NN accelerator</h4><p>Evaluated LeNet, AlexNet, VGG and GoogLeNet for in-memory computation substitution, cutting average execution time by around three minutes.</p><span class="tag">TensorFlow · Keras · Simulink</span></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EXPERIENCE ============================ -->
+<section id="experience" aria-labelledby="xp-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow rv">Track record</p>
+        <h2 class="display rv rv-d1" id="xp-h">Where I've<br>shipped</h2>
+      </div>
+      <p class="lead rv rv-d2">Healthcare, public digital infrastructure, research and content platforms — consistently the environments where a wrong model output has a real cost.</p>
+    </div>
+
+    <div class="xp rv">
+      <article class="xp__row">
+        <div class="xp__glyph"><canvas data-glyph="0" aria-hidden="true"></canvas><span class="xp__glyph-n" aria-hidden="true">01</span></div>
+        <div class="xp__what"><h3>AI/ML Consultant</h3><span class="org">SpinX AI · independent practice</span></div>
+        <div class="xp__desc">
+          <ul>
+            <li>Deliver LLM products for clients across the US, UK, Europe and Australia, owning the arc from discovery call to deployed system.</li>
+            <li>Translate governance requirements — AI management-system standards, national AI ethics and cybersecurity frameworks — into concrete technical controls, then ship against them.</li>
+            <li>Build RAG and agentic systems with evaluation harnesses and monitoring wired in from the first commit.</li>
+          </ul>
+          <p class="stackline">LangGraph · LangChain · FastAPI · EKS · Kafka · Redis · Langfuse</p>
+        </div>
+      </article>
+
+      <article class="xp__row">
+        <div class="xp__glyph"><canvas data-glyph="1" aria-hidden="true"></canvas><span class="xp__glyph-n" aria-hidden="true">02</span></div>
+        <div class="xp__what"><h3>AI Research Engineer</h3><span class="org">Brainwave Science · contract</span></div>
+        <div class="xp__desc">
+          <ul>
+            <li>Raised real-time EEG signal detection accuracy by around 20% with a hybrid CNN/RNN architecture, benchmarked against published research and validated for reliability rather than headline accuracy.</li>
+            <li>Designed a modular inference pipeline with hot-swappable model components, so experiments run without disrupting production streams.</li>
+            <li>Turned current papers into live model iterations, then explained the results to non-technical stakeholders without the jargon.</li>
+          </ul>
+          <p class="stackline">PyTorch · TensorFlow · Keras · Python</p>
+        </div>
+      </article>
+
+      <article class="xp__row">
+        <div class="xp__glyph"><canvas data-glyph="2" aria-hidden="true"></canvas><span class="xp__glyph-n" aria-hidden="true">03</span></div>
+        <div class="xp__what"><h3>SDE, Python &amp; Generative AI</h3><span class="org">Asha Health · AI medical scribe</span></div>
+        <div class="xp__desc">
+          <ul>
+            <li>Built and ran a production medical scribe extracting clinical entities from physician–patient conversations, cutting manual transcription time by roughly 40%.</li>
+            <li>Designed LangGraph stateful agent workflows with conditional branching across documentation, coding and review stages.</li>
+            <li>Shipped a RAG pipeline on AWS Bedrock grounding every generated note in patient history and clinical guidelines — what made the output usable on protected health data.</li>
+            <li>Owned prompt governance and observability through Langfuse: versioned prompts, traced every model call, watched token spend, latency and quality to catch regressions before clinicians did.</li>
+          </ul>
+          <p class="stackline">Python · LangChain · LangGraph · AWS Bedrock/Lambda/S3/DynamoDB · Langfuse · TypeScript</p>
+        </div>
+      </article>
+
+      <article class="xp__row">
+        <div class="xp__glyph"><canvas data-glyph="3" aria-hidden="true"></canvas><span class="xp__glyph-n" aria-hidden="true">04</span></div>
+        <div class="xp__what"><h3>SDE II, Backend &amp; Generative AI</h3><span class="org">EMB Global · Rayo AI platform</span></div>
+        <div class="xp__desc">
+          <ul>
+            <li>Built the agentic content pipeline behind an AI SEO platform: multi-step agents for research, drafting and optimisation, with brand-voice and compliance checks enforced at generation time.</li>
+            <li>Cut manual intervention by roughly 60% by orchestrating content jobs, webhook triggers and third-party integrations through n8n.</li>
+            <li>Owned latency and scalability of the LLM serving path under high content throughput.</li>
+          </ul>
+          <p class="stackline">Python · FastAPI · LangChain · n8n · GPT-4 / Claude · Azure · PostgreSQL</p>
+        </div>
+      </article>
+
+      <article class="xp__row">
+        <div class="xp__glyph"><canvas data-glyph="4" aria-hidden="true"></canvas><span class="xp__glyph-n" aria-hidden="true">05</span></div>
+        <div class="xp__what"><h3>Backend Developer</h3><span class="org">National Health Authority, India · C4GT open source</span></div>
+        <div class="xp__desc">
+          <ul>
+            <li>Built the subscription management microservice for the ABHA national health portal from scratch, automating consent-driven subscription flows across health services.</li>
+            <li>Selected for Code for GovTech, a competitive national mentorship programme for Digital Public Goods.</li>
+          </ul>
+          <p class="stackline">Spring Boot · Java · MongoDB · Docker</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow rv">About</p>
+        <h2 class="display rv rv-d1" id="about-h">Builder, not<br>just a prompter</h2>
+      </div>
+    </div>
+    <div class="about">
+      <div class="rv">
+        <p>I build LLM products end to end and sit with the customer while doing it. That combination is the whole job description: most AI projects do not fail on model quality, they fail because nobody translated what the business actually needed into something a system could be held to.</p>
+        <p>My first three years were spent in places where that gap has teeth. A medical scribe running on protected health information, where an ungrounded sentence is a clinical risk. India's national health identity platform, where a consent flow has to be right for a population, not a cohort. EEG classification, where a 20% accuracy claim has to survive a benchmark against published research rather than a cherry-picked test set.</p>
+        <p>What came out of that is a fairly opinionated way of working. Ground every generation in something retrievable. Version your prompts like code. Trace every model call from day one. Put an evaluation suite between the model and your users, and let it decide what ships. Redact before you infer. None of it is exotic — it is just the difference between a demo and a system.</p>
+        <p>Today I run an independent practice, working with founders and product teams in the US, UK, Europe and Australia who need someone who can scope the problem in the room and then go and build it.</p>
+        <div class="btn-row" style="margin-top:26px">
+          <a class="btn btn--ghost" href="/resume/Suyash-Dubey-Resume.pdf" download><span>Download résumé (PDF)</span><span class="arw" aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <dl class="facts rv rv-d2">
+        <div class="fact"><dt>Based</dt><dd>Remote · India (IST)</dd></div>
+        <div class="fact"><dt>Overlap</dt><dd>Full APAC &amp; AU day · Europe afternoons · US Eastern mornings</dd></div>
+        <div class="fact"><dt>Education</dt><dd>B.Tech, Electronics &amp; Communications Engineering, IIIT Delhi (2020–2024)</dd></div>
+        <div class="fact"><dt>Research</dt><dd>Undergraduate research assistant, VLSI Lab, IIIT Delhi</dd></div>
+        <div class="fact"><dt>Certified</dt><dd>Deep Learning Specialization · TensorFlow Developer · Generative AI for Data Privacy &amp; Protection</dd></div>
+        <div class="fact"><dt>Recognition</dt><dd>Google Hash Code — top 900 of 2,447 teams · CodeChef 4-star · Code for GovTech</dd></div>
+        <div class="fact"><dt>Open source</dt><dd>Contributor to India's national digital health infrastructure</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <p class="eyebrow rv">Questions</p>
+        <h2 class="display rv rv-d1" id="faq-h">Straight<br>answers</h2>
+        <p class="lead rv rv-d2" style="margin-top:22px">If yours is not here, ask it in the form below — I answer briefs personally.</p>
+      </div>
+      <div class="qa rv rv-d1">
+        <details open>
+          <summary>What does an applied AI engineer actually deliver?</summary>
+          <div class="ans"><p>A working system, not a slide deck. That usually means an agent or retrieval pipeline running behind an API, wired into your data, with evaluation and tracing in place so you can see what the model did and why. I scope it with your stakeholders in plain language, build the thin slice first, instrument it, then iterate against real usage.</p></div>
+        </details>
+        <details>
+          <summary>Do you work with regulated or sensitive data?</summary>
+          <div class="ans"><p>Yes. I spent two years on a production medical scribe operating on protected health information, and contributed to India's national digital health infrastructure through Code for GovTech.</p><p>In practice that means grounding every generated output in a retrievable source, redacting PII and PHI before it reaches a model, versioning prompts, tracing every call, and agreeing the regulatory and security constraints in writing at the start of the engagement.</p></div>
+        </details>
+        <details>
+          <summary>What is a typical engagement and timeline?</summary>
+          <div class="ans"><p>Three shapes. A <strong>one to two week discovery sprint</strong> that ends in an architecture and a costed roadmap. A <strong>four to six week MVP build</strong> that ends in a deployed system your users can touch. Or an <strong>ongoing fractional engagement</strong>, typically two to three days a week, embedded with your team.</p></div>
+        </details>
+        <details>
+          <summary>Which models and frameworks do you build on?</summary>
+          <div class="ans"><p>LangGraph and LangChain for orchestration, FastAPI for serving, AWS Bedrock or a direct provider API for inference, FAISS or Chroma for retrieval, and Langfuse for tracing and evaluation.</p><p>I stay provider-neutral — Anthropic, OpenAI and open-weight models all have a place, and the choice should follow the evaluation results rather than the other way round.</p></div>
+        </details>
+        <details>
+          <summary>Can you take an existing prototype to production?</summary>
+          <div class="ans"><p>That is most of the work I get asked for. The gaps are usually the same: no evaluation harness, no tracing, prompts living in application code, retrieval that is not really grounded, and no plan for cost or latency under load. I close those, then put the serving path on infrastructure that can carry it — Kubernetes, Kafka and Redis when the load genuinely demands them.</p></div>
+        </details>
+        <details>
+          <summary>Which time zones do you cover?</summary>
+          <div class="ans"><p>I work remotely from India on IST. That gives a full overlap with the APAC and Australian working day, a comfortable overlap with Europe, and US Eastern mornings. Clients in the US, UK, Europe and Australia have all worked in that rhythm.</p></div>
+        </details>
+        <details>
+          <summary>How do we start?</summary>
+          <div class="ans"><p>Send a short brief through the form below, or email <a href="mailto:dsuyash57@gmail.com" style="text-decoration:underline">dsuyash57@gmail.com</a>. If it looks like a fit, we take a 30 minute call to pressure-test the problem, and I come back with a proposed scope, a timeline and a fixed price for the first phase.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section id="contact" class="contact" aria-labelledby="contact-h">
+  <div class="wrap contact__grid">
+    <div>
+      <p class="eyebrow rv">Contact</p>
+      <h2 class="display rv rv-d1" id="contact-h">Let's build<br>what's next <span class="iris-text">↗</span></h2>
+      <p class="lead rv rv-d2" style="margin-top:24px">Tell me the outcome you need and the constraint you're up against. If I'm not the right person for it, I'll say so and point you at someone who is.</p>
+      <div class="contact__links rv rv-d3">
+        <a class="clink" href="mailto:dsuyash57@gmail.com"><span>dsuyash57@gmail.com</span><em>Email</em></a>
+        <a class="clink" href="https://www.linkedin.com/in/suyash-kumar-dubey-410533211" rel="me noopener" target="_blank"><span>in/suyash-kumar-dubey</span><em>LinkedIn</em></a>
+        <a class="clink" href="https://github.com/suyashdube" rel="me noopener" target="_blank"><span>github.com/suyashdube</span><em>GitHub</em></a>
+        <a class="clink" href="/resume/Suyash-Dubey-Resume.pdf" download><span>Suyash-Dubey-Resume.pdf</span><em>Résumé</em></a>
+      </div>
+    </div>
+
+    <form id="brief" class="card rv rv-d2" style="padding:clamp(24px,3vw,38px)" data-to="dsuyash57@gmail.com" novalidate>
+      <div class="f-row">
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Okafor" required><span class="err"></span></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required><span class="err"></span></div>
+      </div>
+      <div class="f-row">
+        <div class="field"><label for="f-company">Company <span class="muted">(optional)</span></label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Company"></div>
+        <div class="field"><label for="f-eng">Engagement</label>
+          <select id="f-eng" name="engagement">
+            <option>AI MVP development</option>
+            <option>Agentic systems &amp; RAG</option>
+            <option>AI strategy / discovery sprint</option>
+            <option>Evaluation, observability &amp; governance</option>
+            <option>Fractional AI engineer</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label for="f-time">Timeline</label>
+        <select id="f-time" name="timeline">
+          <option>Starting within 2 weeks</option>
+          <option>Within a month</option>
+          <option>This quarter</option>
+          <option>Exploring / no date yet</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-msg">The brief</label><textarea id="f-msg" name="message" placeholder="What outcome are you after, what have you tried, and what's the constraint — data, compliance, latency, budget?" required></textarea><span class="err"></span></div>
+      <button class="btn btn--solid" type="submit" style="align-self:flex-start"><span>Draft the brief</span><span class="arw" aria-hidden="true">↗</span></button>
+      <p class="form-note">This composes the message in your own email app — nothing is transmitted from this page, and no analytics or tracking runs here.</p>
+      <div class="form-status" role="status" aria-live="polite">
+        <p class="form-status__lead"></p>
+        <div class="form-status__acts">
+          <a class="btn btn--solid" data-act="mail" href="#"><span>Open my email app</span><span class="arw" aria-hidden="true">↗</span></a>
+          <a class="btn btn--ghost" data-act="gmail" href="#" target="_blank" rel="noopener"><span>Open in Gmail</span></a>
+          <button class="btn btn--ghost" type="button" data-act="copy"><span>Copy the brief</span></button>
+        </div>
+        <p class="form-status__addr">Or write to <a href="mailto:dsuyash57@gmail.com">dsuyash57@gmail.com</a> directly.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="/"><span class="mono-badge" aria-hidden="true">SD</span><span>Suyash Dubey<small>Applied AI Engineer</small></span></a>
+      <nav aria-label="Footer">
+        <a href="#services">Services</a><a href="#work">Work</a><a href="#experience">Experience</a>
+        <a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/suyash-kumar-dubey-410533211" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="https://github.com/suyashdube" rel="me noopener" target="_blank">GitHub</a>
+      </nav>
+      <small><span data-clock>India (IST)</span></small>
+    </div>
+    <div class="big-mark" aria-hidden="true">Suyash Dubey</div>
+    <div class="foot" style="margin-top:26px">
+      <small>© <span id="yr">2026</span> Suyash Dubey. Built from scratch — no template, no tracking.</small>
+      <small><a href="#main">Back to top ↑</a></small>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script src="/assets/js/prism.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agentic Content Engine — Compliance at Generation Time</title>
+<meta name="description" content="Multi-step research, drafting and optimisation agents with brand-voice and compliance enforced at generation time — ≈60% fewer manual steps.">
+<link rel="canonical" href="https://suyashdubey.com/work/agentic-content-engine.html">
+<meta name="author" content="Suyash Dubey">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#06060a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An agentic content engine with compliance built into generation">
+<meta property="og:description" content="Multi-step agents on FastAPI and n8n, with brand-voice and compliance enforced at generation time rather than in review.">
+<meta property="og:url" content="https://suyashdubey.com/work/agentic-content-engine.html">
+<meta property="og:image" content="https://suyashdubey.com/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="An agentic content engine with compliance built into generation">
+<meta name="twitter:description" content="Multi-step agents on FastAPI and n8n, with brand-voice and compliance enforced at generation time.">
+<meta name="twitter:image" content="https://suyashdubey.com/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"BreadcrumbList","itemListElement":[
+   {"@type":"ListItem","position":1,"name":"Home","item":"https://suyashdubey.com/"},
+   {"@type":"ListItem","position":2,"name":"Work","item":"https://suyashdubey.com/#work"},
+   {"@type":"ListItem","position":3,"name":"Agentic content engine","item":"https://suyashdubey.com/work/agentic-content-engine.html"}]},
+ {"@type":"Article","headline":"An agentic content engine with compliance built into generation",
+  "description":"Multi-step research, drafting and optimisation agents behind an AI SEO platform, with brand-voice and compliance checks enforced at generation time.",
+  "author":{"@type":"Person","name":"Suyash Dubey","url":"https://suyashdubey.com/"},
+  "publisher":{"@type":"Person","name":"Suyash Dubey"},
+  "mainEntityOfPage":"https://suyashdubey.com/work/agentic-content-engine.html",
+  "about":["AI agents","Workflow orchestration","FastAPI","n8n","LLM serving"],
+  "datePublished":"2026-09-09","dateModified":"2026-09-13",
+  "image":"https://suyashdubey.com/assets/img/og.png",
+  "inLanguage":"en"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="/" aria-label="Suyash Dubey — home">
+      <span class="mono-badge" aria-hidden="true">SD</span>
+      <span>Suyash Dubey<small>Applied AI Engineer</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/#services">Services</a><a href="/#work">Work</a><a href="/#experience">Experience</a>
+      <a href="/#about">About</a><a href="/#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <span class="clock"><i aria-hidden="true"></i><span data-clock>India (IST)</span></span>
+      <a class="btn btn--solid" href="/#contact"><span>Start a project</span><span class="arw" aria-hidden="true">↗</span></a>
+      <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="cs-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> <span>/</span> <a href="/#work">Work</a> <span>/</span> <span>Agentic content engine</span></p>
+    <p class="eyebrow rv">EMB Global · Rayo AI platform · 2025</p>
+    <h1 class="display rv rv-d1">Compliance<br>built into<br>generation</h1>
+    <p class="lead rv rv-d2" style="margin-top:26px">An AI SEO platform can produce a thousand drafts an hour. That is only useful if a human does not have to read all thousand to find the two that put the brand at risk.</p>
+    <dl class="cs-meta rv rv-d3">
+      <div><dt>Role</dt><dd>SDE II, Backend &amp; Generative AI</dd></div>
+      <div><dt>Domain</dt><dd>Content operations at scale</dd></div>
+      <div><dt>Outcome</dt><dd>≈60% fewer manual steps</dd></div>
+      <div><dt>Stack</dt><dd>FastAPI · LangChain · n8n · GPT-4 / Claude · Azure · PostgreSQL</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="prose rv">
+      <h2>The constraint</h2>
+      <p>The platform's promise was volume: research a topic, draft against it, optimise for search, publish. The bottleneck was never generation. It was the review queue behind it — a person checking every draft for brand voice, for claims the client could not legally make, for the tone that works in one market and lands badly in another.</p>
+      <p>Scaling generation without scaling review just moves the bottleneck. So the design question was not "how do we generate more" but "what has to be true at generation time so that review becomes an exception rather than a stage".</p>
+
+      <p class="pull">Anything you check after generation, you will check forever. Anything you constrain during generation, you check once.</p>
+
+      <h2>How it was built</h2>
+      <h3>Agents split by responsibility, not by prompt length</h3>
+      <p>Three agent roles rather than one long prompt: a research agent that gathered and cited source material, a drafting agent that worked only from what research had returned, and an optimisation agent that shaped the result for search intent without being allowed to introduce new claims. Splitting them meant each could be evaluated — and fixed — on its own terms.</p>
+
+      <h3>Brand voice and compliance as generation-time constraints</h3>
+      <p>Voice and compliance rules were injected into the generating context and enforced by a checking pass inside the pipeline, before a draft ever surfaced to a human. A violation sent the job back around the loop with the specific rule it had broken, rather than into a queue. Reviewers went from reading everything to arbitrating edge cases.</p>
+
+      <h3>Orchestration through n8n</h3>
+      <p>Content jobs, webhook triggers and third-party integrations ran through n8n. That choice was partly technical and partly organisational: the operations team could see and adjust the flow without waiting on an engineer, which is where a good deal of the manual-step reduction actually came from.</p>
+
+      <h3>Owning the serving path</h3>
+      <p>Under high content throughput, latency and cost live in the LLM serving path. I owned that path on FastAPI and Azure — request batching, concurrency limits, retries with sane backoff, and caching the retrieval work that jobs kept repeating.</p>
+    </div>
+
+    <div class="cs-diagram rv">
+      <svg viewBox="0 0 1000 400" role="img" aria-label="Diagram: a content job enters from n8n, passes through research, drafting and optimisation agents, then a brand-voice and compliance gate that either loops a failing draft back to drafting or releases it to publishing, with FastAPI serving and Postgres holding job state.">
+        <defs>
+          <linearGradient id="e1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3fe4ff"/><stop offset="100%" stop-color="#7c5cff"/></linearGradient>
+          <linearGradient id="e2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#ff5cd0"/></linearGradient>
+          <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#7c5cff"/></marker>
+          <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ff5cd0"/></marker>
+        </defs>
+        <style>
+          .bx{fill:rgba(255,255,255,.035);stroke:rgba(255,255,255,.16)}
+          .lb{fill:#f5f5f8;font:500 14px Inter,system-ui,sans-serif}
+          .sm{fill:#8b8b9a;font:400 11px 'JetBrains Mono',monospace;letter-spacing:.08em}
+          .ln{stroke:url(#e1);stroke-width:1.6;fill:none;marker-end:url(#ar2)}
+          .back{stroke:#ff5cd0;stroke-width:1.4;fill:none;marker-end:url(#ar3);stroke-dasharray:5 5}
+          .dash{stroke:#7c5cff;stroke-width:1.2;stroke-dasharray:4 5;fill:none;opacity:.6}
+        </style>
+        <rect class="bx" x="24" y="140" width="132" height="70" rx="14"/>
+        <text class="lb" x="44" y="170">n8n trigger</text><text class="sm" x="44" y="192">WEBHOOK / CRON</text>
+
+        <rect class="bx" x="188" y="140" width="140" height="70" rx="14"/><text class="lb" x="208" y="172">Research</text><text class="sm" x="208" y="192">CITED SOURCES</text>
+        <rect class="bx" x="360" y="140" width="140" height="70" rx="14"/><text class="lb" x="380" y="172">Draft</text><text class="sm" x="380" y="192">SOURCES ONLY</text>
+        <rect class="bx" x="532" y="140" width="140" height="70" rx="14"/><text class="lb" x="552" y="172">Optimise</text><text class="sm" x="552" y="192">NO NEW CLAIMS</text>
+
+        <rect class="bx" x="704" y="128" width="160" height="94" rx="14" stroke="url(#e2)"/>
+        <text class="lb" x="724" y="162">Voice &amp;</text><text class="lb" x="724" y="182">compliance gate</text><text class="sm" x="724" y="204">PASS / RETURN</text>
+
+        <rect class="bx" x="896" y="140" width="80" height="70" rx="14"/><text class="lb" x="912" y="172">Publish</text>
+
+        <path class="ln" d="M156 175h26"/><path class="ln" d="M328 175h26"/><path class="ln" d="M500 175h26"/><path class="ln" d="M672 175h26"/><path class="ln" d="M864 175h26"/>
+        <path class="back" d="M784 222v42H430v-48"/>
+        <text class="sm" x="556" y="284">FAILS → BACK WITH THE RULE IT BROKE</text>
+
+        <rect class="bx" x="188" y="316" width="484" height="56" rx="13"/>
+        <text class="lb" x="208" y="342">FastAPI serving path</text>
+        <text class="sm" x="208" y="362">BATCHING · CONCURRENCY LIMITS · RETRIES · RETRIEVAL CACHE</text>
+        <rect class="bx" x="704" y="316" width="272" height="56" rx="13"/>
+        <text class="lb" x="724" y="342">PostgreSQL</text><text class="sm" x="724" y="362">JOB STATE · AUDIT TRAIL</text>
+        <path class="dash" d="M430 210v106"/><path class="dash" d="M784 222v94"/>
+      </svg>
+      <p class="cs-cap">Simplified flow. The gate is inside the pipeline, not after it — a failing draft loops back with its violated rule instead of entering a human queue.</p>
+    </div>
+
+    <div class="prose rv">
+      <h2>What changed</h2>
+      <p>Manual intervention fell by roughly 60%. More usefully, the shape of the remaining work changed: reviewers stopped being a throughput ceiling and became the people who resolved genuinely ambiguous cases and tuned the rules that caught the rest.</p>
+      <p>The transferable lesson is unglamorous. In content systems, the leverage is almost never a better generation prompt — it is moving a check from after generation to during it, and giving the failure a machine-readable reason so the pipeline can act on it.</p>
+
+      <h2>My role</h2>
+      <ul>
+        <li>Built the multi-step agentic content pipeline for research, drafting and optimisation.</li>
+        <li>Enforced brand-voice and compliance checks at generation time rather than in review.</li>
+        <li>Orchestrated content jobs, webhook triggers and third-party integrations through n8n.</li>
+        <li>Owned latency and scalability of the LLM serving path on FastAPI and Azure under high throughput.</li>
+      </ul>
+      <p class="muted" style="font-size:.84rem;margin-top:34px">Client-confidential implementation detail is deliberately omitted. Figures are approximate and reflect internal measurement at the time.</p>
+    </div>
+
+    <div class="next-cs">
+      <a class="card card--tilt" href="/work/national-health-subscription-service.html"><em>Next case study</em><h4>Consent-driven subscriptions for a national health portal ↗</h4></a>
+      <a class="card card--tilt" href="/#contact"><em>Working on something similar?</em><h4>Send me the brief ↗</h4></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="/"><span class="mono-badge" aria-hidden="true">SD</span><span>Suyash Dubey<small>Applied AI Engineer</small></span></a>
+      <nav aria-label="Footer">
+        <a href="/#services">Services</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/suyash-kumar-dubey-410533211" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="https://github.com/suyashdube" rel="me noopener" target="_blank">GitHub</a>
+      </nav>
+      <small><span data-clock>India (IST)</span></small>
+    </div>
+    <div class="foot" style="margin-top:26px">
+      <small>© <span id="yr">2026</span> Suyash Dubey. Built from scratch — no template, no tracking.</small>
+      <small><a href="#main">Back to top ↑</a></small>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

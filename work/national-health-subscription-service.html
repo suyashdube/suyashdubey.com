@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Consent-Driven Subscriptions for ABHA — Case Study</title>
+<meta name="description" content="Building the subscription microservice for ABHA, India's national health identity platform — consent as the primary object, via Code for GovTech.">
+<link rel="canonical" href="https://suyashdubey.com/work/national-health-subscription-service.html">
+<meta name="author" content="Suyash Dubey">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#06060a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Consent-driven subscriptions for a national health portal">
+<meta property="og:description" content="The subscription management microservice for ABHA, built from scratch as part of Code for GovTech.">
+<meta property="og:url" content="https://suyashdubey.com/work/national-health-subscription-service.html">
+<meta property="og:image" content="https://suyashdubey.com/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Consent-driven subscriptions for a national health portal">
+<meta name="twitter:description" content="The subscription management microservice for ABHA, built from scratch as part of Code for GovTech.">
+<meta name="twitter:image" content="https://suyashdubey.com/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"BreadcrumbList","itemListElement":[
+   {"@type":"ListItem","position":1,"name":"Home","item":"https://suyashdubey.com/"},
+   {"@type":"ListItem","position":2,"name":"Work","item":"https://suyashdubey.com/#work"},
+   {"@type":"ListItem","position":3,"name":"National health subscription service","item":"https://suyashdubey.com/work/national-health-subscription-service.html"}]},
+ {"@type":"Article","headline":"Consent-driven subscriptions for a national health portal",
+  "description":"Building the subscription management microservice for ABHA, India's national health identity platform, as part of Code for GovTech.",
+  "author":{"@type":"Person","name":"Suyash Dubey","url":"https://suyashdubey.com/"},
+  "publisher":{"@type":"Person","name":"Suyash Dubey"},
+  "mainEntityOfPage":"https://suyashdubey.com/work/national-health-subscription-service.html",
+  "about":["Digital public goods","Microservices","Spring Boot","Consent management","Health infrastructure"],
+  "datePublished":"2026-09-09","dateModified":"2026-09-13",
+  "image":"https://suyashdubey.com/assets/img/og.png",
+  "inLanguage":"en"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="/" aria-label="Suyash Dubey — home">
+      <span class="mono-badge" aria-hidden="true">SD</span>
+      <span>Suyash Dubey<small>Applied AI Engineer</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/#services">Services</a><a href="/#work">Work</a><a href="/#experience">Experience</a>
+      <a href="/#about">About</a><a href="/#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <span class="clock"><i aria-hidden="true"></i><span data-clock>India (IST)</span></span>
+      <a class="btn btn--solid" href="/#contact"><span>Start a project</span><span class="arw" aria-hidden="true">↗</span></a>
+      <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="cs-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> <span>/</span> <a href="/#work">Work</a> <span>/</span> <span>National health subscription service</span></p>
+    <p class="eyebrow rv">National Health Authority, India · ABHA · 2023</p>
+    <h1 class="display rv rv-d1">Consent at<br>national<br>scale</h1>
+    <p class="lead rv rv-d2" style="margin-top:26px">ABHA is India's national health identity platform. Building a service inside it is a lesson in designing for a population rather than a cohort — where the edge case is not rare, it just happens to a few hundred thousand people.</p>
+    <dl class="cs-meta rv rv-d3">
+      <div><dt>Role</dt><dd>Backend Developer (Code for GovTech)</dd></div>
+      <div><dt>Domain</dt><dd>Digital public goods · health identity</dd></div>
+      <div><dt>Scope</dt><dd>Subscription microservice, built from scratch</dd></div>
+      <div><dt>Stack</dt><dd>Spring Boot · Java · MongoDB · Docker</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="prose rv">
+      <h2>The constraint</h2>
+      <p>Citizens holding a national health account need to be able to subscribe to health services — and, more importantly, to control what those services may see and for how long. Consent is not a checkbox at signup. It is a living object: granted for a purpose, scoped to a set of data, valid for a window, and revocable at any moment, with the revocation having to actually take effect downstream.</p>
+      <p>Selection for Code for GovTech, a competitive national mentorship programme for Digital Public Goods, came with the corollary that whatever I wrote had to be legible to whoever maintained it next. Public infrastructure outlives its authors.</p>
+
+      <p class="pull">A consent record that cannot be revoked convincingly is not consent. It is a log entry.</p>
+
+      <h2>How it was built</h2>
+      <h3>Consent as the primary object</h3>
+      <p>The service was modelled around the consent artefact rather than the subscription. A subscription is a consequence of a valid consent — purpose, data scope, validity window, subscriber identity — so evaluating whether a subscription is currently live is a question about consent state, answered in one place instead of being re-derived by every consumer.</p>
+
+      <h3>Explicit, auditable state transitions</h3>
+      <p>Granted, active, expired, revoked. Each transition written as an event, so the history of a subscription is reconstructable rather than inferred from a mutable row. In a national system, "why did this service have access on that date" has to have an answer.</p>
+
+      <h3>Idempotent, retry-safe APIs</h3>
+      <p>Anything integrating across health services will be called twice — retries, duplicate webhooks, a client with an optimistic timeout. Every state-changing endpoint was written to be idempotent so a repeat carries no consequence, which is far cheaper than the deduplication logic each consumer would otherwise invent for itself.</p>
+
+      <h3>Containerised and reproducible</h3>
+      <p>Docker from the start, so the service ran the same way on a contributor's laptop as it did in the platform's environment — which matters disproportionately on an open-source project where the next contributor has none of your context.</p>
+    </div>
+
+    <div class="cs-diagram rv">
+      <svg viewBox="0 0 1000 380" role="img" aria-label="Diagram: a citizen grants consent through the ABHA portal; the subscription service records the consent artefact with purpose, scope and validity, writes each state transition as an event to MongoDB, and answers access checks from health services, with revocation immediately closing access.">
+        <defs>
+          <linearGradient id="n1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3fe4ff"/><stop offset="100%" stop-color="#7c5cff"/></linearGradient>
+          <linearGradient id="n2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#ff5cd0"/></linearGradient>
+          <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#7c5cff"/></marker>
+          <marker id="an2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ff5cd0"/></marker>
+        </defs>
+        <style>
+          .bx{fill:rgba(255,255,255,.035);stroke:rgba(255,255,255,.16)}
+          .lb{fill:#f5f5f8;font:500 14px Inter,system-ui,sans-serif}
+          .sm{fill:#8b8b9a;font:400 11px 'JetBrains Mono',monospace;letter-spacing:.08em}
+          .ln{stroke:url(#n1);stroke-width:1.6;fill:none;marker-end:url(#an)}
+          .rev{stroke:#ff5cd0;stroke-width:1.4;fill:none;marker-end:url(#an2);stroke-dasharray:5 5}
+        </style>
+        <rect class="bx" x="24" y="52" width="168" height="76" rx="14"/>
+        <text class="lb" x="46" y="84">Citizen · ABHA</text><text class="sm" x="46" y="106">GRANTS / REVOKES</text>
+
+        <rect class="bx" x="252" y="24" width="330" height="200" rx="18" stroke="url(#n2)"/>
+        <text class="sm" x="274" y="54">SUBSCRIPTION MICROSERVICE</text>
+        <rect class="bx" x="274" y="70" width="286" height="52" rx="11"/>
+        <text class="lb" x="294" y="94">Consent artefact</text><text class="sm" x="294" y="113">PURPOSE · SCOPE · VALIDITY</text>
+        <rect class="bx" x="274" y="140" width="286" height="60" rx="11"/>
+        <text class="lb" x="294" y="164">State machine</text>
+        <text class="sm" x="294" y="185">GRANTED → ACTIVE → EXPIRED / REVOKED</text>
+
+        <rect class="bx" x="642" y="24" width="160" height="88" rx="14"/>
+        <text class="lb" x="662" y="56">Event log</text><text class="sm" x="662" y="78">MONGODB</text><text class="sm" x="662" y="96">REPLAYABLE HISTORY</text>
+
+        <rect class="bx" x="642" y="136" width="160" height="88" rx="14"/>
+        <text class="lb" x="662" y="168">Health services</text><text class="sm" x="662" y="190">ACCESS CHECK</text><text class="sm" x="662" y="208">IDEMPOTENT APIS</text>
+
+        <path class="ln" d="M192 90h54"/>
+        <path class="ln" d="M582 96h54"/>
+        <path class="ln" d="M582 170h54"/>
+        <path class="rev" d="M108 128v152h614v-50"/>
+        <text class="sm" x="196" y="304">REVOCATION PROPAGATES — ACCESS CLOSES AT THE NEXT CHECK, NOT AT THE NEXT BATCH</text>
+        <rect class="bx" x="24" y="316" width="952" height="44" rx="12"/>
+        <text class="sm" x="46" y="344">DOCKERISED · REPRODUCIBLE FOR THE NEXT CONTRIBUTOR · OPEN SOURCE UNDER CODE FOR GOVTECH</text>
+      </svg>
+      <p class="cs-cap">Simplified model. Consent is the primary object; a subscription is a consequence of one that is currently valid.</p>
+    </div>
+
+    <div class="prose rv">
+      <h2>What changed</h2>
+      <p>The platform gained a subscription service where consent-driven flows across health services were automated rather than coordinated by hand, and where the access history of any subscription could be reconstructed from events.</p>
+      <p>Personally it reset my definition of "done". In a product, done is when it works for your users. In public infrastructure, done is when it works for a stranger's users, on a bad connection, in a state you have never visited, and remains legible to a maintainer who has never met you.</p>
+
+      <h2>My role</h2>
+      <ul>
+        <li>Built the subscription management microservice for the ABHA national health portal from scratch.</li>
+        <li>Automated consent-driven subscription flows across health services.</li>
+        <li>Modelled state transitions as an auditable event history and made state-changing APIs idempotent.</li>
+        <li>Contributed the work in the open, under Code for GovTech — a competitive national mentorship programme for Digital Public Goods.</li>
+      </ul>
+      <p class="muted" style="font-size:.84rem;margin-top:34px">Described at the level of publicly documented architecture. Implementation specifics belong to the National Health Authority.</p>
+    </div>
+
+    <div class="next-cs">
+      <a class="card card--tilt" href="/work/clinical-documentation-agent.html"><em>Next case study</em><h4>A clinical documentation agent doctors kept using ↗</h4></a>
+      <a class="card card--tilt" href="/#contact"><em>Working on something similar?</em><h4>Send me the brief ↗</h4></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="/"><span class="mono-badge" aria-hidden="true">SD</span><span>Suyash Dubey<small>Applied AI Engineer</small></span></a>
+      <nav aria-label="Footer">
+        <a href="/#services">Services</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/suyash-kumar-dubey-410533211" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="https://github.com/suyashdube" rel="me noopener" target="_blank">GitHub</a>
+      </nav>
+      <small><span data-clock>India (IST)</span></small>
+    </div>
+    <div class="foot" style="margin-top:26px">
+      <small>© <span id="yr">2026</span> Suyash Dubey. Built from scratch — no template, no tracking.</small>
+      <small><a href="#main">Back to top ↑</a></small>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

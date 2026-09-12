@@ -1,0 +1,30 @@
+# Suyash Dubey — Applied / Forward-Deployed AI Engineer
+
+> Independent AI engineer and consultant. Builds agentic systems, RAG pipelines
+> and production LLM products. Three years shipping in healthcare and public
+> digital infrastructure. Remote from India (IST), working with clients in the
+> US, UK, Europe and Australia.
+
+Contact: dsuyash57@gmail.com
+LinkedIn: https://www.linkedin.com/in/suyash-kumar-dubey-410533211
+GitHub: https://github.com/suyashdube
+
+## Services
+- AI MVP development — 4–6 weeks, zero to one, ends in a deployed system.
+- Agentic systems and RAG engineering — LangGraph state machines, tool use,
+  human-in-the-loop review, grounded retrieval.
+- AI strategy and forward-deployed consulting — 1–2 week discovery sprint ending
+  in an architecture and a costed roadmap.
+- LLM evaluation, observability and governance — eval harnesses, Langfuse
+  tracing, prompt versioning, PII/PHI redaction, governance mapped to controls.
+
+## Core stack
+LangGraph, LangChain, FastAPI, AWS Bedrock, Langfuse, FAISS/Chroma, Kubernetes,
+Kafka, Redis, PostgreSQL, Terraform, PyTorch.
+
+## Pages
+- / — home: services, selected work, experience, about, FAQ, contact
+- /work/clinical-documentation-agent.html — clinical documentation agent (Asha Health)
+- /work/agentic-content-engine.html — agentic content engine (EMB Global, Rayo)
+- /work/national-health-subscription-service.html — ABHA subscription microservice
+- /resume/Suyash-Dubey-Resume.pdf — résumé

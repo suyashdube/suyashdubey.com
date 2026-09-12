@@ -1,0 +1,45 @@
+# Everything here is public and citable.
+User-agent: *
+Allow: /
+
+# --- Search crawlers ---
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: DuckDuckBot
+Allow: /
+User-agent: Applebot
+Allow: /
+
+# --- Answer engines / AI assistants ---
+# OAI-SearchBot fetches pages that ChatGPT cites in answers; GPTBot is
+# OpenAI's separate training crawler. Both are welcome here.
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: meta-externalagent
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://suyashdubey.com/sitemap.xml

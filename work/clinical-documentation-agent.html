@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clinical Documentation Agent — LangGraph &amp; Bedrock RAG</title>
+<meta name="description" content="How a LangGraph agent and an AWS Bedrock RAG pipeline turned physician–patient conversations into grounded clinical notes — ≈40% less documentation time.">
+<link rel="canonical" href="https://suyashdubey.com/work/clinical-documentation-agent.html">
+<meta name="author" content="Suyash Dubey">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#06060a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A clinical documentation agent that doctors kept using">
+<meta property="og:description" content="LangGraph agent workflows, grounded RAG on AWS Bedrock and Langfuse prompt governance — on protected health data.">
+<meta property="og:url" content="https://suyashdubey.com/work/clinical-documentation-agent.html">
+<meta property="og:image" content="https://suyashdubey.com/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A clinical documentation agent that doctors kept using">
+<meta name="twitter:description" content="LangGraph agent workflows, grounded RAG on AWS Bedrock and Langfuse prompt governance — on protected health data.">
+<meta name="twitter:image" content="https://suyashdubey.com/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"BreadcrumbList","itemListElement":[
+   {"@type":"ListItem","position":1,"name":"Home","item":"https://suyashdubey.com/"},
+   {"@type":"ListItem","position":2,"name":"Work","item":"https://suyashdubey.com/#work"},
+   {"@type":"ListItem","position":3,"name":"Clinical documentation agent","item":"https://suyashdubey.com/work/clinical-documentation-agent.html"}]},
+ {"@type":"Article","headline":"A clinical documentation agent that doctors kept using",
+  "description":"How a LangGraph agent and an AWS Bedrock RAG pipeline turned physician–patient conversations into grounded clinical notes.",
+  "author":{"@type":"Person","name":"Suyash Dubey","url":"https://suyashdubey.com/"},
+  "publisher":{"@type":"Person","name":"Suyash Dubey"},
+  "mainEntityOfPage":"https://suyashdubey.com/work/clinical-documentation-agent.html",
+  "about":["AI agents","Retrieval-augmented generation","Healthcare AI","LangGraph","AWS Bedrock"],
+  "datePublished":"2026-09-09","dateModified":"2026-09-13",
+  "image":"https://suyashdubey.com/assets/img/og.png",
+  "inLanguage":"en"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="/" aria-label="Suyash Dubey — home">
+      <span class="mono-badge" aria-hidden="true">SD</span>
+      <span>Suyash Dubey<small>Applied AI Engineer</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/#services">Services</a><a href="/#work">Work</a><a href="/#experience">Experience</a>
+      <a href="/#about">About</a><a href="/#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <span class="clock"><i aria-hidden="true"></i><span data-clock>India (IST)</span></span>
+      <a class="btn btn--solid" href="/#contact"><span>Start a project</span><span class="arw" aria-hidden="true">↗</span></a>
+      <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="cs-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> <span>/</span> <a href="/#work">Work</a> <span>/</span> <span>Clinical documentation agent</span></p>
+    <p class="eyebrow rv">Asha Health · AI medical scribe · 2023–2025</p>
+    <h1 class="display rv rv-d1">A clinical<br>documentation agent<br>doctors kept using</h1>
+    <p class="lead rv rv-d2" style="margin-top:26px">Most scribe products win the demo and lose the third week. The interesting engineering was not the transcription — it was everything that had to be true before a physician would let a generated sentence into a patient record.</p>
+    <dl class="cs-meta rv rv-d3">
+      <div><dt>Role</dt><dd>SDE, Python &amp; Generative AI</dd></div>
+      <div><dt>Domain</dt><dd>Healthcare · protected health data</dd></div>
+      <div><dt>Outcome</dt><dd>≈40% less manual documentation time</dd></div>
+      <div><dt>Stack</dt><dd>LangGraph · LangChain · AWS Bedrock · Lambda · DynamoDB · Langfuse</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="prose rv">
+      <h2>The constraint</h2>
+      <p>Clinicians were spending a large share of every consultation typing rather than looking at the patient, and the documentation backlog was following them home. A summarisation model on top of a transcript gets you a plausible-looking note in an afternoon. It does not get you a note anyone will sign.</p>
+      <p>Three things had to hold before that was possible. Every clinical claim in the note had to trace back to something said in the encounter or recorded in the patient's history. Nothing identifiable could reach a model that had no business seeing it. And when the output was wrong — it would sometimes be wrong — we had to be able to reconstruct exactly which prompt version, which retrieved context and which model call produced it.</p>
+
+      <p class="pull">A demo needs the model to be right. A clinical system needs you to be able to prove why it was right, and to notice quickly when it stops being.</p>
+
+      <h2>How it was built</h2>
+      <h3>A state machine, not a prompt chain</h3>
+      <p>The workflow was a LangGraph state machine with conditional branching across documentation, coding and review stages. That structure mattered more than any individual prompt. A linear chain fails over to a human the moment anything is ambiguous; a graph can route — send an under-specified medication mention to a clarification node, hold a low-confidence code for review, and carry on with the rest of the note instead of abandoning the whole run.</p>
+      <p>State lived outside the model, in DynamoDB, so a run could be inspected, resumed and replayed rather than existing only inside a context window.</p>
+
+      <h3>Retrieval as the grounding contract</h3>
+      <p>A RAG pipeline on AWS Bedrock grounded every generated note in patient history and clinical guidelines. The retrieval layer was not there to make output sound better — it was the mechanism that made the output admissible. Generation nodes could only assert what retrieval had supplied, and every assertion carried its source through to review.</p>
+
+      <h3>Redaction before inference</h3>
+      <p>PII and PHI were stripped at the pipeline boundary, before anything reached a model endpoint. Doing it at the boundary rather than per-call meant a new node could be added later without someone having to remember the rule.</p>
+
+      <h3>Prompt governance and observability</h3>
+      <p>Prompts were versioned artefacts, not string literals in application code. Langfuse traced every model call, and token spend, latency and quality KPIs were watched continuously — which is how regressions were caught before clinicians ran into them rather than after. That single decision, made early, did more for trust in the system than any model upgrade.</p>
+    </div>
+
+    <div class="cs-diagram rv">
+      <svg viewBox="0 0 1000 400" role="img" aria-label="Pipeline diagram: encounter audio is transcribed, PHI is redacted, then a LangGraph agent with extract, draft, code and review nodes generates a note grounded by a Bedrock retrieval layer over patient history and clinical guidelines, with Langfuse tracing across the whole run and a clinician approving before the note reaches the record.">
+        <defs>
+          <linearGradient id="d1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3fe4ff"/><stop offset="100%" stop-color="#7c5cff"/></linearGradient>
+          <linearGradient id="d2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#ff5cd0"/></linearGradient>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#7c5cff"/></marker>
+        </defs>
+        <style>
+          .bx{fill:rgba(255,255,255,.035);stroke:rgba(255,255,255,.16)}
+          .lb{fill:#f5f5f8;font:500 14px Inter,system-ui,sans-serif}
+          .sm{fill:#8b8b9a;font:400 11px 'JetBrains Mono',monospace;letter-spacing:.08em}
+          .ln{stroke:url(#d1);stroke-width:1.6;fill:none;marker-end:url(#ar)}
+          .dash{stroke:#7c5cff;stroke-width:1.2;stroke-dasharray:4 5;fill:none;opacity:.65}
+        </style>
+        <rect class="bx" x="24" y="150" width="150" height="72" rx="14"/>
+        <text class="lb" x="46" y="182">Encounter audio</text><text class="sm" x="46" y="202">ASR TRANSCRIPT</text>
+        <rect class="bx" x="206" y="150" width="150" height="72" rx="14"/>
+        <text class="lb" x="228" y="182">PHI redaction</text><text class="sm" x="228" y="202">BOUNDARY</text>
+
+        <rect class="bx" x="388" y="66" width="330" height="242" rx="18" stroke="url(#d2)"/>
+        <text class="sm" x="410" y="96">LANGGRAPH STATE MACHINE</text>
+        <rect class="bx" x="410" y="112" width="128" height="52" rx="11"/><text class="lb" x="428" y="143">Extract</text>
+        <rect class="bx" x="568" y="112" width="128" height="52" rx="11"/><text class="lb" x="586" y="143">Draft</text>
+        <rect class="bx" x="410" y="188" width="128" height="52" rx="11"/><text class="lb" x="428" y="219">Review</text>
+        <rect class="bx" x="568" y="188" width="128" height="52" rx="11"/><text class="lb" x="586" y="219">Code</text>
+        <path class="ln" d="M538 138h24"/><path class="ln" d="M632 164v20"/><path class="ln" d="M562 214h-20" transform="translate(6 0)"/>
+        <text class="sm" x="410" y="286">STATE IN DYNAMODB · RESUMABLE</text>
+
+        <rect class="bx" x="750" y="66" width="226" height="112" rx="14"/>
+        <text class="lb" x="772" y="100">Bedrock retrieval</text>
+        <text class="sm" x="772" y="122">PATIENT HISTORY</text><text class="sm" x="772" y="142">CLINICAL GUIDELINES</text>
+        <rect class="bx" x="750" y="196" width="226" height="112" rx="14"/>
+        <text class="lb" x="772" y="230">Clinician review</text>
+        <text class="sm" x="772" y="252">HUMAN APPROVES</text><text class="sm" x="772" y="272">→ PATIENT RECORD</text>
+
+        <path class="ln" d="M174 186h26"/><path class="ln" d="M356 186h26"/>
+        <path class="ln" d="M718 122h26"/><path class="ln" d="M718 250h26"/>
+        <path class="dash" d="M60 330h880"/>
+        <text class="sm" x="60" y="352">LANGFUSE — EVERY CALL TRACED · PROMPTS VERSIONED · SPEND, LATENCY AND QUALITY WATCHED</text>
+      </svg>
+      <p class="cs-cap">Simplified architecture. Redaction sits at the boundary, retrieval gates what the generator is allowed to assert, and tracing spans the whole run.</p>
+    </div>
+
+    <div class="prose rv">
+      <h2>What changed</h2>
+      <p>Manual transcription time fell by roughly 40%. The number worth more attention is the second-order one: because prompts were versioned and every call traced, changing the system stopped being frightening. A prompt could be revised on a Tuesday and its effect on note quality read off the traces by Wednesday — which is the difference between an AI feature that ossifies after launch and one that keeps improving.</p>
+      <p>The part I would carry into any regulated build unchanged: decide what the system is allowed to assert, and make retrieval — not the prompt — the thing that enforces it.</p>
+
+      <h2>My role</h2>
+      <ul>
+        <li>Designed and built the LangGraph stateful agent workflows across documentation, coding and review.</li>
+        <li>Shipped the RAG pipeline on AWS Bedrock grounding generated notes in patient history and clinical guidelines.</li>
+        <li>Owned prompt governance and observability through Langfuse — versioning, tracing, and the token, latency and quality KPIs.</li>
+        <li>Gathered requirements directly from clinical stakeholders and converted them into agent behaviour specs, without engineering jargon in the room.</li>
+      </ul>
+      <p class="muted" style="font-size:.84rem;margin-top:34px">Client-confidential implementation detail is deliberately omitted. Figures are approximate and reflect internal measurement at the time.</p>
+    </div>
+
+    <div class="next-cs">
+      <a class="card card--tilt" href="/work/agentic-content-engine.html"><em>Next case study</em><h4>An agentic content engine with compliance built into generation ↗</h4></a>
+      <a class="card card--tilt" href="/#contact"><em>Working on something similar?</em><h4>Send me the brief ↗</h4></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="/"><span class="mono-badge" aria-hidden="true">SD</span><span>Suyash Dubey<small>Applied AI Engineer</small></span></a>
+      <nav aria-label="Footer">
+        <a href="/#services">Services</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/suyash-kumar-dubey-410533211" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="https://github.com/suyashdube" rel="me noopener" target="_blank">GitHub</a>
+      </nav>
+      <small><span data-clock>India (IST)</span></small>
+    </div>
+    <div class="foot" style="margin-top:26px">
+      <small>© <span id="yr">2026</span> Suyash Dubey. Built from scratch — no template, no tracking.</small>
+      <small><a href="#main">Back to top ↑</a></small>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -7,7 +7,7 @@
     <description>Notes on building LLM systems that survive production.</description>
     <language>en</language>
     <managingEditor>dsuyash57@gmail.com (Suyash Dubey)</managingEditor>
-    <lastBuildDate>Sun, 13 Sep 2026 10:19:39 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 10:24:58 +0000</lastBuildDate>
     <item>
       <title>Patches, not paragraphs: constrained generation for clinical text</title>
       <link>https://suyashdubey.com/blog/patches-not-paragraphs.html</link>

@@ -171,13 +171,17 @@ the difference between a finding and a coincidence.
 Four separate infrastructure problems burned hours, and every one of them resembled
 normal operation:
 
-| Symptom | Actual cause |
-|---|---|
-| Model download crawling at 0.5 MB/s | A new storage backend hanging; disabling it gave 10x |
-| Sweep script dying silently mid-run | `grep` exits non-zero on no-match, and `set -e` killed the script |
-| API run hung ~30 min at 0% CPU | Default 10-minute client timeout × retries |
-| Inference process killed, no output | OOM from long prompts × batch size |
-| Every HTTPS call failing certificate verification | A Python build shipping no CA bundle |
+- **Model downloads crawling at 0.5 MB/s** — a new storage backend hanging on
+  connection reuse. Disabling it gave a 10x speedup.
+- **A sweep script dying silently mid-run** — `grep` exits non-zero when it matches
+  nothing, and `set -e` dutifully killed the script. It looked like the sweep had
+  finished.
+- **An API run hanging ~30 minutes at 0% CPU** — the client's default ten-minute
+  timeout, multiplied by its default retries.
+- **An inference process killed with no output** — OOM from long prompts times batch
+  size. No traceback, just a missing file.
+- **Every HTTPS call failing certificate verification** — a Python build shipping
+  without a CA bundle.
 
 The transferable lesson: **filter your logs for failure signatures, not just success
 lines.** A silent stall and a working run look identical from the outside, and the

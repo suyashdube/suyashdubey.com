@@ -203,36 +203,19 @@ the difference between a finding and a coincidence.</p>
 <h2>The failures that looked like progress</h2>
 <p>Four separate infrastructure problems burned hours, and every one of them resembled
 normal operation:</p>
-<table>
-<thead>
-<tr>
-<th>Symptom</th>
-<th>Actual cause</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Model download crawling at 0.5 MB/s</td>
-<td>A new storage backend hanging; disabling it gave 10x</td>
-</tr>
-<tr>
-<td>Sweep script dying silently mid-run</td>
-<td><code>grep</code> exits non-zero on no-match, and <code>set -e</code> killed the script</td>
-</tr>
-<tr>
-<td>API run hung ~30 min at 0% CPU</td>
-<td>Default 10-minute client timeout × retries</td>
-</tr>
-<tr>
-<td>Inference process killed, no output</td>
-<td>OOM from long prompts × batch size</td>
-</tr>
-<tr>
-<td>Every HTTPS call failing certificate verification</td>
-<td>A Python build shipping no CA bundle</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Model downloads crawling at 0.5 MB/s</strong> — a new storage backend hanging on
+connection reuse. Disabling it gave a 10x speedup.</li>
+<li><strong>A sweep script dying silently mid-run</strong> — <code>grep</code> exits non-zero when it matches
+nothing, and <code>set -e</code> dutifully killed the script. It looked like the sweep had
+finished.</li>
+<li><strong>An API run hanging ~30 minutes at 0% CPU</strong> — the client's default ten-minute
+timeout, multiplied by its default retries.</li>
+<li><strong>An inference process killed with no output</strong> — OOM from long prompts times batch
+size. No traceback, just a missing file.</li>
+<li><strong>Every HTTPS call failing certificate verification</strong> — a Python build shipping
+without a CA bundle.</li>
+</ul>
 <p>The transferable lesson: <strong>filter your logs for failure signatures, not just success
 lines.</strong> A silent stall and a working run look identical from the outside, and the
 cheapest instrumentation you will ever write is the one that makes a hang loud.</p>

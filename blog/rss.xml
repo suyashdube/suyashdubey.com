@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Suyash Dubey — Writing</title>
+    <link>https://suyashdubey.com/blog/</link>
+    <atom:link href="https://suyashdubey.com/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>Notes on building LLM systems that survive production.</description>
+    <language>en</language>
+    <managingEditor>dsuyash57@gmail.com (Suyash Dubey)</managingEditor>
+    <lastBuildDate>Sun, 13 Sep 2026 09:58:13 +0000</lastBuildDate>
+
+  </channel>
+</rss>

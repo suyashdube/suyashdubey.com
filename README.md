@@ -44,6 +44,48 @@ grep -rl "suyashdubey.com" . --include="*.html" --include="*.xml" --include="*.t
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=6000 --screenshot=assets/img/og.png http://localhost:8899/og.html
 ```
 
+## Writing (`/blog`)
+
+Posts are Markdown files in `content/posts/`. Filenames may be prefixed with a
+date (`2026-09-20-my-post.md`) — the prefix is stripped from the URL. Files
+starting with `_` are ignored, so `_TEMPLATE.md` and `_EXAMPLE-*.md` never build.
+
+```markdown
+---
+title: A short, specific title
+description: One or two sentences, under 155 characters.
+date: 2026-09-20
+tags: LangGraph, RAG, Production
+draft: false
+---
+
+Your post in Markdown.
+```
+
+Build and publish:
+
+```bash
+python3 build.py && git add -A && git commit -m "post: my title" && git push
+```
+
+`build.py` regenerates `blog/index.html`, one page per post, `blog/rss.xml` and
+`sitemap.xml`. It also deletes HTML for posts you removed or set back to draft,
+so nothing orphaned stays live. Needs `markdown-it-py`
+(`python3 -m pip install markdown-it-py`).
+
+### Cross-posting without losing SEO credit
+
+Publish here **first** and let Google crawl it (Search Console → URL Inspection →
+Request indexing). Then syndicate:
+
+- **Hashnode** — Publish → Draft settings → *Discovery* → *Are you republishing?* →
+  tick **Add a canonical URL** and paste your `suyashdubey.com/blog/...` URL.
+  Confirmed available on the Free plan.
+- **Medium** — use the importer at `medium.com/p/import`. It pulls the content in
+  and sets `rel=canonical` back to your URL automatically. **Never paste into
+  Medium's editor** — that creates a duplicate with no canonical, and Medium will
+  outrank you for your own writing.
+
 ## Deploying
 
 Live on **GitHub Pages** from `main` (root), repo `suyashdube/suyashdubey.com`.

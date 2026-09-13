@@ -24,6 +24,7 @@ Kafka, Redis, PostgreSQL, Terraform, PyTorch.
 
 ## Pages
 - / — home: services, selected work, experience, about, FAQ, contact
+- /blog/ — writing on building LLM systems that survive production (RSS: /blog/rss.xml)
 - /work/clinical-documentation-agent.html — clinical documentation agent (Asha Health)
 - /work/agentic-content-engine.html — agentic content engine (EMB Global, Rayo)
 - /work/national-health-subscription-service.html — ABHA subscription microservice

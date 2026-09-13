@@ -83,7 +83,8 @@ def strip_tags(s):
 
 
 # ---------------------------------------------------------------- page shell
-def shell(title, description, canonical, body, extra_head="", og_type="website"):
+def shell(title, description, canonical, body, extra_head="", og_type="website", og_image=None):
+    og_image = og_image or f"{SITE}/assets/img/og.png"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -100,13 +101,13 @@ def shell(title, description, canonical, body, extra_head="", og_type="website")
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{SITE}/assets/img/og.png">
+<meta property="og:image" content="{og_image}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(description)}">
-<meta name="twitter:image" content="{SITE}/assets/img/og.png">
+<meta name="twitter:image" content="{og_image}">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="alternate" type="application/rss+xml" title="{AUTHOR} — writing" href="{SITE}/blog/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="{AUTHOR} — blog" href="{SITE}/blog/rss.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -122,7 +123,7 @@ def shell(title, description, canonical, body, extra_head="", og_type="website")
       <span>{AUTHOR}<small>Applied AI Engineer</small></span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="/#services">Services</a><a href="/#work">Work</a><a href="/blog/">Writing</a>
+      <a href="/#services">Services</a><a href="/#work">Work</a><a href="/blog/">Blog</a>
       <a href="/#about">About</a><a href="/#faq">FAQ</a>
     </nav>
     <div class="nav__cta">
@@ -140,7 +141,7 @@ def shell(title, description, canonical, body, extra_head="", og_type="website")
     <div class="foot">
       <a class="brand" href="/"><span class="mono-badge" aria-hidden="true">SD</span><span>{AUTHOR}<small>Applied AI Engineer</small></span></a>
       <nav aria-label="Footer">
-        <a href="/#services">Services</a><a href="/#work">Work</a><a href="/blog/">Writing</a>
+        <a href="/#services">Services</a><a href="/#work">Work</a><a href="/blog/">Blog</a>
         <a href="/#about">About</a><a href="/#contact">Contact</a>
         <a href="/blog/rss.xml">RSS</a>
         <a href="https://www.linkedin.com/in/suyash-kumar-dubey-410533211" rel="me noopener" target="_blank">LinkedIn</a>
@@ -149,13 +150,14 @@ def shell(title, description, canonical, body, extra_head="", og_type="website")
       <small><span data-clock>India (IST)</span></small>
     </div>
     <div class="foot" style="margin-top:26px">
-      <small>© <span id="yr">2026</span> {AUTHOR}. Built from scratch — no template, no tracking.</small>
+      <small>© <span id="yr">2026</span> {AUTHOR}. Built from scratch — no template, no cookies, no ad tech.</small>
       <small><a href="#main">Back to top ↑</a></small>
     </div>
   </div>
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 <script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
 </body>
 </html>
 """
@@ -188,6 +190,8 @@ def load_posts():
             "tags": meta.get("tags", []),
             "body_md": body,
             "html": md.render(body),
+            "cover": meta.get("cover", ""),
+            "cover_alt": meta.get("cover_alt", ""),
             "mins": reading_time(body),
             "url": f"{SITE}/blog/{slug}.html",
         })
@@ -202,7 +206,7 @@ def render_post(post, prev_post, next_post):
 {{"@context":"https://schema.org","@graph":[
  {{"@type":"BreadcrumbList","itemListElement":[
   {{"@type":"ListItem","position":1,"name":"Home","item":"{SITE}/"}},
-  {{"@type":"ListItem","position":2,"name":"Writing","item":"{SITE}/blog/"}},
+  {{"@type":"ListItem","position":2,"name":"Blog","item":"{SITE}/blog/"}},
   {{"@type":"ListItem","position":3,"name":{js_str(post['title'])},"item":"{post['url']}"}}]}},
  {{"@type":"BlogPosting","headline":{js_str(post['title'])},
   "description":{js_str(post['description'])},
@@ -210,7 +214,7 @@ def render_post(post, prev_post, next_post):
   "author":{{"@type":"Person","name":"{AUTHOR}","url":"{SITE}/"}},
   "publisher":{{"@type":"Person","name":"{AUTHOR}"}},
   "mainEntityOfPage":"{post['url']}",
-  "image":"{SITE}/assets/img/og.png",
+  "image":"{SITE}{post['cover']}" if post['cover'].startswith('/') else "{SITE}/assets/img/og.png",
   "keywords":{js_str(', '.join(post['tags']))},
   "inLanguage":"en"}}]}}
 </script>
@@ -230,11 +234,12 @@ def render_post(post, prev_post, next_post):
     body = f"""<article>
 <section class="cs-hero">
   <div class="wrap">
-    <p class="crumbs"><a href="/">Home</a> <span>/</span> <a href="/blog/">Writing</a> <span>/</span> <span>{esc(post['title'])}</span></p>
+    <p class="crumbs"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a> <span>/</span> <span>{esc(post['title'])}</span></p>
     <p class="eyebrow rv">{fmt_date(post['date'])} · {post['mins']} min read</p>
     <h1 class="display rv rv-d1" style="font-size:clamp(2.1rem,5vw,4.4rem)">{esc(post['title'])}</h1>
     {f'<p class="lead rv rv-d2" style="margin-top:24px">{esc(post["description"])}</p>' if post['description'] else ''}
     {f'<div class="tags rv rv-d3" style="margin-top:26px">{tags}</div>' if tags else ''}
+    {f'<figure class="post-cover rv rv-d4"><img src="{esc(post["cover"])}" alt="{esc(post["cover_alt"])}" width="1600" height="840" loading="eager"></figure>' if post['cover'] else ''}
   </div>
 </section>
 <section style="padding-top:0">
@@ -258,7 +263,8 @@ def render_post(post, prev_post, next_post):
 </section>
 </article>"""
     desc = post["description"] or strip_tags(post["html"])[:155]
-    return shell(f"{post['title']} — {AUTHOR}", desc, post["url"], body, schema, "article")
+    og = f"{SITE}{post['cover']}" if post["cover"].startswith("/") else (post["cover"] or f"{SITE}/assets/img/og.png")
+    return shell(f"{post['title']} — {AUTHOR}", desc, post["url"], body, schema, "article", og)
 
 
 def js_str(s):
@@ -270,13 +276,16 @@ def render_index(posts):
         items = []
         for i, p in enumerate(posts):
             tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in p["tags"][:3])
-            items.append(f"""      <a class="post-row rv{' rv-d' + str(min(i,4)) if i else ''}" href="/blog/{p['slug']}.html">
+            thumb = (f'<span class="post-row__thumb"><img src="{esc(p["cover"])}" alt="" loading="lazy"></span>'
+                     if p["cover"] else '')
+            items.append(f"""      <a class="post-row{' post-row--img' if p['cover'] else ''} rv{' rv-d' + str(min(i,4)) if i else ''}" href="/blog/{p['slug']}.html">
         <span class="post-row__meta">{fmt_date(p['date'])} · {p['mins']} min</span>
         <span class="post-row__body">
           <h2>{esc(p['title'])}</h2>
           {f"<p>{esc(p['description'])}</p>" if p['description'] else ''}
           {f'<span class="tags">{tags}</span>' if tags else ''}
         </span>
+        {thumb}
       </a>""")
         listing = f'<div class="post-list">\n{chr(10).join(items)}\n    </div>'
     else:
@@ -289,7 +298,7 @@ def render_index(posts):
 
     schema = f"""<script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Blog","@id":"{SITE}/blog/#blog",
- "name":"Writing — {AUTHOR}","url":"{SITE}/blog/",
+ "name":"Blog — {AUTHOR}","url":"{SITE}/blog/",
  "description":"Notes on building LLM systems that survive production.",
  "author":{{"@type":"Person","name":"{AUTHOR}","url":"{SITE}/"}},
  "inLanguage":"en"}}
@@ -297,8 +306,8 @@ def render_index(posts):
 """
     body = f"""<section class="cs-hero">
   <div class="wrap">
-    <p class="crumbs"><a href="/">Home</a> <span>/</span> <span>Writing</span></p>
-    <p class="eyebrow rv">Writing</p>
+    <p class="crumbs"><a href="/">Home</a> <span>/</span> <span>Blog</span></p>
+    <p class="eyebrow rv">Blog</p>
     <h1 class="display rv rv-d1" style="font-size:clamp(2.4rem,6.4vw,5.6rem)">Notes from<br>production</h1>
     <p class="lead rv rv-d2" style="margin-top:26px">What actually breaks when LLM systems meet
     real users, real data and real regulation — written up properly, with the reasoning left in.
@@ -311,7 +320,7 @@ def render_index(posts):
   </div>
 </section>"""
     return shell(
-        f"Writing — {AUTHOR}",
+        f"Blog — {AUTHOR}",
         "Notes on building LLM systems that survive production — agents, retrieval, evaluation and the parts that break under real load.",
         f"{SITE}/blog/", body, schema, "website")
 
@@ -329,7 +338,7 @@ def render_rss(posts):
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{AUTHOR} — Writing</title>
+    <title>{AUTHOR} — Blog</title>
     <link>{SITE}/blog/</link>
     <atom:link href="{SITE}/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Notes on building LLM systems that survive production.</description>

@@ -7,7 +7,13 @@
     <description>Notes on building LLM systems that survive production.</description>
     <language>en</language>
     <managingEditor>dsuyash57@gmail.com (Suyash Dubey)</managingEditor>
-    <lastBuildDate>Sun, 13 Sep 2026 10:12:12 +0000</lastBuildDate>
-
+    <lastBuildDate>Sun, 13 Sep 2026 10:19:39 +0000</lastBuildDate>
+    <item>
+      <title>Patches, not paragraphs: constrained generation for clinical text</title>
+      <link>https://suyashdubey.com/blog/patches-not-paragraphs.html</link>
+      <guid isPermaLink="true">https://suyashdubey.com/blog/patches-not-paragraphs.html</guid>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+      <description>A model that writes the whole document can fail in ways you cannot bound. Emitting a structured patch and rendering deterministically removes an entire class of failure.</description>
+    </item>
   </channel>
 </rss>
